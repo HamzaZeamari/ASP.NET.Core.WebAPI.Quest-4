@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using SelfieAWookie.API.UI.ExtensionMethods;
+using SelfieAWookie.Core.Selfies.Domain;
 using SelfieAWookie.Core.Selfies.Infrastructures.Data;
+using SelfieAWookie.Core.Selfies.Infrastructures.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,8 @@ builder.Services.AddDbContext<SelfieContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SelfiesDatabase"), sqlOptions =>{});
 });
+
+builder.Services.AddInjections();
 
 var app = builder.Build();
 
